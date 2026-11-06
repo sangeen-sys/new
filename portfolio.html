@@ -3,24 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sangeen</title>
+    <title>Sangeen - Animated</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            background: radial-gradient(circle at center, #1a1a2e, #0f0c29);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
         }
+
+        /* Floating background glowing bubbles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff007f, #7928ca);
+            left: 15%;
+            top: 20%;
+            animation-duration: 6s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            right: 15%;
+            top: 15%;
+            animation-duration: 9s;
+            animation-delay: -2s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #f9d423, #ff4e50);
+            left: 25%;
+            bottom: 15%;
+            animation-duration: 7s;
+            animation-delay: -4s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #00f260, #0575e6);
+            right: 20%;
+            bottom: 20%;
+            animation-duration: 11s;
+            animation-delay: -1s;
+        }
+
+        @keyframes floatUp {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-40px) rotate(180deg) scale(1.15);
+            }
+        }
+
+        /* Glassmorphism card */
+        .card {
+            position: relative;
+            z-index: 10;
+            padding: 3rem 4rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 40px rgba(255, 0, 127, 0.6);
+            }
+        }
+
+        /* Animated gradient text */
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
+            text-transform: capitalize;
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, #ff007f, #00d2ff, #f9d423, #ff007f);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        p {
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 2px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-    <h1>sangeen</h1>
+    <!-- Floating background glow elements -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Center Card -->
+    <div class="card">
+        <h1>sangeen</h1>
+        <p>Creative Developer</p>
+    </div>
 </body>
 </html>
